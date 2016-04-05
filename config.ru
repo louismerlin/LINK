@@ -1,4 +1,4 @@
-puts '~~~Link~~~'
+puts '~~~LinkIt~~~'
 
 require 'sinatra'
 require 'sequel'
@@ -14,4 +14,4 @@ require './models.rb'
 require './tests.rb' if settings.environment == :test
 require './app.rb'
 
-run Link
+run LinkIt

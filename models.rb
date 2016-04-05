@@ -19,8 +19,8 @@ if !File.exists?("./link.db") || settings.environment == :test
 
   DB.create_table :channels do
     primary_key :id
+    Integer     :kind # 0:conversation; 1:group
     String      :name
-    foreign_key :user_id
   end
 
   DB.create_table :links do
@@ -29,13 +29,11 @@ if !File.exists?("./link.db") || settings.environment == :test
     String      :description
     Datetime    :sent
     Datetime    :read
+    foreign_key :user_id
+    foreign_key :channel_id
   end
 
-  DB.create_table :groups do
-
-  end
-
-  DB.create_join_table(:user_id=>)
+  DB.create_join_table(:user_id=>:users, :channel_id=>:channels)
 
 
 else
@@ -44,19 +42,16 @@ end
 
 class User < Sequel::Model
   plugin :secure_password
-  many_to_many :Channels
-  #many_to_many : users?#
+  many_to_many :channels
+  one_to_many :links
 end
 
 class Channel < Sequel::Model
   many_to_many :users
-end
-#FIND A WAY TO CREATE #
-
-class Group < Channel
-  many_to_many :users
+  one_to_many :links
 end
 
-class Conversation < Channel
-  many_to_many :users
+class Link < Sequel::Model
+  many_to_one :user
+  many_to_one :channel
 end

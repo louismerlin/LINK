@@ -1,7 +1,7 @@
-class Link < Sinatra::Base
-  register Sinatra::Reloader if settings.environment == :development
+class LinkIt < Sinatra::Base
+  register Sinatra::Reloader if settings.environment == :development || settings.environment == :test
+  
   get '/' do
-    @breads = Bread.all.last(10)
     erb :'index', :layout => :'layout'
   end
 end
