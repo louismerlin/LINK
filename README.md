@@ -1,5 +1,5 @@
-# sinatra-boilerplate
-Minimal template for a sinatra webapp !
+# link 
+The best way to share links
 
 ## Installing
 
