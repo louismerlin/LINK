@@ -1,3 +1,9 @@
+*{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 html, body{
   width: 100%;
   height: 100%;
@@ -12,30 +18,42 @@ html, body{
   padding: 0 auto;
 }
 
+.channelSelect{
+  border: 1px solid black;
+  background-color: white;
+}
+
+.linkBox{
+  border: 1px solid blue;
+  background-color: white;
+}
+
 #mainPanel{
   width: 100%;
   height: 100%;
   background-color: red;
-  display: flex;
 }
-#contactsPanel{
+#channelsPanel{
   display: flex;
   flex-direction: column;
   height: 100%;
-  flex-grow: 1;
+  width: 20%;
+  float:left;
   background-color: lightgrey;
 }
-#conversationPanel{
+#contentPanel{
   display: flex;
   flex-direction: column-reverse;
   height: 100%;
+  width: 40%;
+  float:left;
   background-color: grey;
-  flex-grow: 2;
 }
 #digestPanel{
   display: flex;
   flex-direction: column-reverse;
   height: 100%;
-  flex-grow: 2;
-  background-color: white;
+  width: 40%;
+  float:left;
+  background-color: lightgrey;
 }

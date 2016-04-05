@@ -4,7 +4,7 @@ require 'sinatra'
 require 'sequel'
 require 'yaml'
 require 'tilt/erb'
-require "sinatra/reloader" if settings.environment == :development || settings.environment == :test
+require 'json'
 
 CONFIG = YAML.load_file('config.yml')
 
