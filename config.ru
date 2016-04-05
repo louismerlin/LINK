@@ -1,10 +1,10 @@
-puts '~~~Boirlerplate~~~'
+puts '~~~Link~~~'
 
 require 'sinatra'
 require 'sequel'
 require 'yaml'
 require 'tilt/erb'
-require "sinatra/reloader" if settings.environment == :development
+require "sinatra/reloader" if settings.environment == :development || settings.environment == :test
 
 CONFIG = YAML.load_file('config.yml')
 
@@ -14,4 +14,4 @@ require './models.rb'
 require './tests.rb' if settings.environment == :test
 require './app.rb'
 
-run Boilerplate
+run Link
