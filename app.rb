@@ -1,4 +1,4 @@
-class Boilerplate < Sinatra::Base
+class Link < Sinatra::Base
   register Sinatra::Reloader if settings.environment == :development
   get '/' do
     @breads = Bread.all.last(10)
