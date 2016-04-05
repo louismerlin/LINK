@@ -1,0 +1,6 @@
+<% @breads.each do |bread| %>
+<h4><%= bread.type %> bread slices:</h4>
+<% bread.slices.each do |slice| %>
+<p><%= slice.width %></p>
+<% end %>
+<% end %>
