@@ -1,0 +1,41 @@
+html, body{
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+.container{
+  position: relative;
+  width:100%;
+  height:100%;
+  margin: 0 auto;
+  padding: 0 auto;
+}
+
+#mainPanel{
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  display: flex;
+}
+#contactsPanel{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex-grow: 1;
+  background-color: lightgrey;
+}
+#conversationPanel{
+  display: flex;
+  flex-direction: column-reverse;
+  height: 100%;
+  background-color: grey;
+  flex-grow: 2;
+}
+#digestPanel{
+  display: flex;
+  flex-direction: column-reverse;
+  height: 100%;
+  flex-grow: 2;
+  background-color: white;
+}
