@@ -2,6 +2,7 @@ puts '~~~LinkIt~~~'
 
 require 'sinatra'
 require 'sequel'
+require 'warden'
 require 'yaml'
 require 'tilt/erb'
 require 'json'

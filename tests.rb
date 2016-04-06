@@ -22,14 +22,14 @@ tests << Proc.new { User.all.first.channels.first == channel_1 }
 tests << Proc.new { User.all.first.channels.first.users.select{|u| u!= User.all.first}[0] == user_2 }
 
 #Links
-link_1 = Link.new(url:"reddit.com", description:"The frontpage of the internet", sent:Time.now()).save
-link_2 = Link.new(url:"news.ycombinator.com", description:"Hacker News", sent:Time.now()).save
+link_1 = Link.new(url:"http://www.reddit.com", description:"The frontpage of the internet", sent:Time.now()).save
+link_2 = Link.new(url:"http://news.ycombinator.com", description:"Hacker News", sent:Time.now()).save
 user_1.add_link(link_1)
 channel_1.add_link(link_1)
 user_2.add_link(link_2)
 channel_1.add_link(link_2)
 
-tests << Proc.new { User.all.first.links.first.url == "reddit.com" }
+tests << Proc.new { User.all.first.links.first.url == "http://www.reddit.com" }
 tests << Proc.new { channel_1.links.count == 2 }
 
 
