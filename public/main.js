@@ -1,12 +1,12 @@
 const openedChannel = "";
 
-function post (url, data) {
+function post(url, data) {
   var postRequest = new XMLHttpRequest();
   postRequest.open('POST', url, true);
   postRequest.send(data);
 }
 
-function fetch (url, func) {
+function fetch(url, func) {
   var getRequest = new XMLHttpRequest();
   getRequest.open('GET', url, true);
   getRequest.onerror = function() {
@@ -25,7 +25,9 @@ function fetch (url, func) {
 }
 
 function updateData() {
-  fetch('channels', function(arg){fillChannels(arg)});
+  fetch('channels', function(arg) {
+    fillChannels(arg)
+  });
   //fetch('channels/'+openedChannel, fillContent());
   //fetch('users/whatever', fillDigest());
 }
@@ -33,7 +35,7 @@ function updateData() {
 function fillChannels(data) {
   var panel = '';
 
-  data.forEach(function(value, index){
+  data.forEach(function(value, index) {
     panel += `<div class='channelSelect' id='chS_${value.id}'>
                 <p>${value.name}</p>
               </div>`;
@@ -41,7 +43,7 @@ function fillChannels(data) {
 
   document.getElementById("channelsPanel").innerHTML = panel;
 
-  data.forEach(function(value, index){
+  data.forEach(function(value, index) {
     document.getElementById("chS_" + value.id).onclick = function() {
       selectChannel(value.id)
     };
@@ -52,7 +54,7 @@ function fillChannels(data) {
 function fillContent(data) {
   var panel = '';
 
-  data.forEach(function(value, index){
+  data.forEach(function(value, index) {
     panel += `<div class='linkBox'>
                 <a href="${value.url}">${value.url}</a>
                 <p>${value.description}</p>
@@ -67,7 +69,9 @@ function fillDigest(data) {
 }
 
 function selectChannel(id) {
-  fetch('channels/' + id, function(arg){fillContent(arg)});
+  fetch('channels/' + id, function(arg) {
+    fillContent(arg)
+  });
 }
 
 function checkLoginStatus(status) {
@@ -83,19 +87,24 @@ function showLogin() {
   document.getElementById("fader").style.visibility = "visible";
   document.getElementById("loginDiv").style.visibility = "visible";
 }
+
 function hideLogin() {
   document.getElementById("fader").style.visibility = "hidden";
   document.getElementById("loginDiv").style.visibility = "hidden";
 }
 
-fetch('status', function(arg){ checkLoginStatus(arg) });
+fetch('status', function(arg) {
+  checkLoginStatus(arg)
+});
 
 document.getElementById("loginButton").onclick = function() {
   inputs = document.getElementById("loginForm").childNodes;
   data = {};
-  for(var i=0;i<inputs.length;i++){
+  for (var i = 0; i < inputs.length; i++) {
     data[inputs[i].name] = inputs[i].value;
   }
   post('/login', JSON.stringify(data));
-  fetch('status', function(arg){ checkLoginStatus(arg) });
+  fetch('status', function(arg) {
+    checkLoginStatus(arg)
+  });
 }
