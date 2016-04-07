@@ -96,15 +96,3 @@ function hideLogin() {
 fetch('status', function(arg) {
   checkLoginStatus(arg)
 });
-
-document.getElementById("loginButton").onclick = function() {
-  inputs = document.getElementById("loginForm").childNodes;
-  data = {};
-  for (var i = 0; i < inputs.length; i++) {
-    data[inputs[i].name] = inputs[i].value;
-  }
-  post('/login', JSON.stringify(data));
-  fetch('status', function(arg) {
-    checkLoginStatus(arg)
-  });
-}

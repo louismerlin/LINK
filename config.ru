@@ -11,8 +11,8 @@ CONFIG = YAML.load_file('config.yml')
 
 use Rack::Session::Cookie, :secret => CONFIG['cookie_secret']
 
+require './app.rb'
 require './models.rb'
 require './tests.rb' if settings.environment == :test
-require './app.rb'
 
 run LinkIt

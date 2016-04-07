@@ -45,12 +45,14 @@ class LinkIt < Sinatra::Base
     warden_handler.authenticated?.to_json
   end
 
-  post '/login' do
+  post '/session' do
     warden_handler.authenticate!
+    redirect '/'
   end
 
   get '/logout' do
     warden_handler.logout
+    redirect '/'
   end
 
   use Warden::Manager do |manager|
@@ -81,12 +83,6 @@ class LinkIt < Sinatra::Base
 
   def warden_handler
     env['warden']
-  end
-
-  def check_authentication
-    unless warden_handler.authenticated?
-      redirect '/login'
-    end
   end
 
   def current_user
