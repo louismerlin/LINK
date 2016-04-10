@@ -1,7 +1,11 @@
 class LinkIt < Sinatra::Base
 
   get '/' do
-    erb :'index', :layout => :'layout'
+    if warden_handler.authenticated?
+      erb :'index', :layout => :'layout'
+    else
+      redirect '/login'
+    end
   end
 
   #
@@ -40,6 +44,10 @@ class LinkIt < Sinatra::Base
   #
   # USER MANAGEMENT
   #
+
+  get '/login' do
+    erb :'login', :layout => :'layout'
+  end
 
   get '/status' do
     warden_handler.authenticated?.to_json

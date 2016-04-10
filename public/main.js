@@ -83,16 +83,6 @@ function checkLoginStatus(status) {
   }
 }
 
-function showLogin() {
-  document.getElementById("fader").style.visibility = "visible";
-  document.getElementById("loginDiv").style.visibility = "visible";
-}
-
-function hideLogin() {
-  document.getElementById("fader").style.visibility = "hidden";
-  document.getElementById("loginDiv").style.visibility = "hidden";
-}
-
 fetch('status', function(arg) {
   checkLoginStatus(arg)
 });
