@@ -11,8 +11,7 @@ class LinkIt < Sinatra::Base
   ### API
   get '/digest' do
     check_authentication
-    puts "hello"
-    current_user.links.where{|l| l.read == nil}.to_json
+    current_user.links.select{|l| l.read == nil}.to_json
   end
 
   ### USERS
