@@ -11,7 +11,7 @@ tests << Proc.new { User.all.first.password != "merlin" }
 
 #Chanels
 channel_1 = Channel.new(kind:0).save
-user_2 = User.new(username:"hugoroussel")
+user_2 = User.new(first_name:"Hugo", last_name:"Roussel", email:"hroussel@epfl.ch", username:"hugoroussel")
 user_2.password = "roussel"
 user_2.password_confirmation = "roussel"
 user_2.save

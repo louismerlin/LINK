@@ -8,9 +8,12 @@ class LinkIt < Sinatra::Base
     end
   end
 
-  #
-  # API
-  #
+  ### API
+  get '/digest' do
+    check_authentication
+    puts "hello"
+    current_user.links.where{|l| l.read == nil}.to_json
+  end
 
   ### USERS
 
