@@ -29,7 +29,9 @@ class LinkIt < Sinatra::Base
       @user.password_confirmation = params[:password_confirmation]
       @user.save
     end
+    redirect '/'
   end
+
 
   ### CHANNELS
 
@@ -40,6 +42,12 @@ class LinkIt < Sinatra::Base
   get '/channels/:id' do
     User.all.first.channels.first.links.map{|l| l.values}.to_json
   end
+
+  #post '/channels' do
+  #  if params[:channels.users] > 0 && < 51
+  #      @channel = Channel.new(kind:0, name:params[:convo_name])
+  #      @channel.save
+  # end
 
   #
   # USER MANAGEMENT
@@ -56,6 +64,12 @@ class LinkIt < Sinatra::Base
   post '/session' do
     warden_handler.authenticate!
     redirect '/'
+  end
+
+  post '/signup' do
+    #user_1 = User.new(first_name:"erb:login", last_name:"Merlin", email:"louis.merlin@epfl.ch", username:"louismerlin")
+    #user_1.save
+    puts "Hello World"
   end
 
   get '/logout' do

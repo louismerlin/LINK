@@ -1,7 +1,24 @@
+
+<div style="text-align:center">
 <h1>Log In</h1>
 <form action="/session" method="post" id="loginForm">
   <input name="email" placeholder="Email" type="text"/>
   <input name="password" placeholder="Password" type="password"/>
   <button type="submit">Log In</button>
 </form>
+
 <h1>Don't have an account ? Just sign up below!</h1>
+
+<form action="/users" method="post" id="signupForm">
+
+<input name="first_name" placeholder="First Name" type="text"><br>
+<input name="last_name" placeholder="Last Name" type="text"><br>
+<input name="email" placeholder="Email" type="text"/><br>
+<input name="username" placeholder="Username" type="text"/><br>
+<input name="password" placeholder="Password" type="password"/><br>
+<input name="password_confirmation" placeholder="Confirm password" type="password"/><br>
+
+<button type="submit">Sign up</button>
+
+</form>
+</div>
