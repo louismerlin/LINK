@@ -36,9 +36,14 @@ function fillChannels(data) {
   var panel = '';
 
   data.forEach(function(value, index) {
-    panel += `<div class='channelSelect' id='chS_${value.id}'>
-                <p>${value.name}</p>
-              </div>`;
+    panel += `<div class='channelSelect' id='chS_${value.id}'>`
+    if (value.kind==0){
+      panel += `<p>${value.users[0].username}</p>`
+    } else {
+      panel += `<p>${value.name}</p>`
+    }
+    console.log(value)
+    panel += `</div>`;
   });
 
   document.getElementById("channelsPanel").innerHTML = panel;
