@@ -40,10 +40,11 @@ class LinkIt < Sinatra::Base
 
   get '/channels' do
     check_authentication
-    current_user.channels.map{|l| l.values.merge("users": l.users.map{|l| {
-      username:l[:username],
-      first_name:l[:first_name],
-      last_name:l[:last_name]}})}.to_json
+    current_user.channels.map{|l|
+      l.values.merge("users": l.users.map{|l| {
+        username:l[:username],
+        first_name:l[:first_name],
+        last_name:l[:last_name]}}.delete_if{|u| u[:username] == current_user.username})}.to_json
   end
 
   get '/channels/:id' do
@@ -115,7 +116,7 @@ class LinkIt < Sinatra::Base
   end
 
   def current_user
-    User.all[warden_handler.user]
+    User.all[warden_handler.user-1]
   end
 
   def check_authentication
