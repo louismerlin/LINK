@@ -77,9 +77,6 @@ function selectChannel(id) {
 function checkLoginStatus(status) {
   if (status) {
     updateData();
-    hideLogin();
-  } else {
-    showLogin();
   }
 }
 

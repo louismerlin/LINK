@@ -36,7 +36,11 @@ class LinkIt < Sinatra::Base
   ### CHANNELS
 
   get '/channels' do
-    '[{"id":0, "name":"Hugo"}, {"id":1, "name":"Louis"}]'
+    check_authentication
+    current_user.channels.map{|l| l.values.merge("users": l.users.map{|l| {
+      username:l[:username],
+      first_name:l[:first_name],
+      last_name:l[:last_name]}})}.to_json
   end
 
   get '/channels/:id' do
@@ -108,7 +112,13 @@ class LinkIt < Sinatra::Base
   end
 
   def current_user
-    warden_handler.user
+    User.all[warden_handler.user]
+  end
+
+  def check_authentication
+    if current_user==nil
+      redirect '/login'
+    end
   end
 
 end
