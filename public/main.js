@@ -42,7 +42,6 @@ function fillChannels(data) {
     } else {
       panel += `<p>${value.name}</p>`
     }
-    console.log(value)
     panel += `</div>`;
   });
 

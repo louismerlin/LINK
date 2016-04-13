@@ -71,12 +71,6 @@ class LinkIt < Sinatra::Base
     redirect '/'
   end
 
-  post '/signup' do
-    #user_1 = User.new(first_name:"erb:login", last_name:"Merlin", email:"louis.merlin@epfl.ch", username:"louismerlin")
-    #user_1.save
-    puts "Hello World"
-  end
-
   get '/logout' do
     warden_handler.logout
     redirect '/'
